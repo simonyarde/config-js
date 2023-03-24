@@ -1,0 +1,23 @@
+{
+  "name": "@simonyarde/config",
+  "version": "1.0.0",
+  "description": "Application config",
+  "main": "config.mjs",
+  "files": [
+    "config.mjs",
+    "config.mts",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Simon Yarde",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0"
+  },
+  "dependencies": {
+    "@simonyarde/type": "^1.0.0"
+  }
+}
