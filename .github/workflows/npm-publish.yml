@@ -2,6 +2,11 @@
 
 # https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
 
+# Note Using automatically generated GITHUB_TOKEN requires workflow permission
+# to be set to 'read and write'.
+
+# https://github.com/{{org}}/type-js/settings/actions
+
 name: Publish NPM package
 
 on:  
@@ -43,6 +48,9 @@ jobs:
   publish-gpr:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -50,9 +58,8 @@ jobs:
           node-version: 18
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: npm publish
         env:
-          # Note Using automatically generated GITHUB_TOKEN requires workflow
-          # permission to be set to 'read and write'.
-          # https://github.com/{{org}}/type-js/settings/actions
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
