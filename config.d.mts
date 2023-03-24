@@ -28,3 +28,5 @@ export interface Config {
      */
     fromFile(path: string, ...vars: { [key: string]: any }[]): Promise<object>
 }
+
+export const config: Config

@@ -1,5 +1,5 @@
 import { expect } from '../node_modules/chai/index.mjs'
-import { Config } from '../config.mjs'
+import { config } from '../config.mjs'
 
 const testConfigPath = './test/test-config.json'
 
@@ -21,8 +21,10 @@ const testConfigString = `
 }
 `
 
-const envDefaults = { A: 'A1', B: 'B1' }
-const env         = { B: 'B2' }
+const vars = [
+    { A: 'A1', B: 'B1' },
+    { B: 'B2' }
+]
 
 const expectConfig = {
     'rootA': 'A1 B2',
@@ -35,17 +37,17 @@ const expectConfig = {
 describe('Basic tests', function() {
 
     it('fromFile()', async function() {
-        const config = await Config.fromFile(testConfigPath, envDefaults, env)
-        expect(config).to.deep.equal(expectConfig)
+        const result = await config.fromFile(testConfigPath, ...vars)
+        expect(result).to.deep.equal(expectConfig)
     })
 
     it('fromString()', function() {
-        const config = Config.fromString(testConfigString, envDefaults, env)
-        expect(config).to.deep.equal(expectConfig)
+        const result = config.fromString(testConfigString, ...vars)
+        expect(result).to.deep.equal(expectConfig)
     })
 
-    it('fromObj()', function() {
-        const config = Config.fromObj(testConfigObject, envDefaults, env)
-        expect(config).to.deep.equal(expectConfig)
+    it('fromObject()', function() {
+        const result = config.fromObject(testConfigObject, ...vars)
+        expect(result).to.deep.equal(expectConfig)
     })    
 })

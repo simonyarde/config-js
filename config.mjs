@@ -1,9 +1,9 @@
 import { is, expect } from "@simonyarde/type"
 import { readFile } from "node:fs/promises"
 
-export const Config = {
+export const config = {
 
-    fromObj(x, ...vars) {
+    fromObject(x, ...vars) {
         expect.prototype(x)
         const replacer = getReplacer(Object.assign({}, ...vars))
         return replaceTokens(x, replacer)
@@ -17,7 +17,7 @@ export const Config = {
 
     fromString(x, ...vars) {
         expect.string(x)
-        return this.fromObj(JSON.parse(x), ...vars)
+        return this.fromObject(JSON.parse(x), ...vars)
     }
 }
 
