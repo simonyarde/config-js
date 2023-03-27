@@ -1,4 +1,4 @@
-export interface Config {
+export interface IConfig {
     /**
      * Returns a config object for the supplied object.
      *
@@ -29,4 +29,4 @@ export interface Config {
     fromFile(path: string, ...vars: { [key: string]: any }[]): Promise<object>
 }
 
-export const config: Config
+export const Config: IConfig

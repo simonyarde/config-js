@@ -1,7 +1,7 @@
 import { is, expect } from "@simonyarde/type"
 import { readFile } from "node:fs/promises"
 
-export const config = {
+export const Config = {
 
     fromObject(x, ...vars) {
         expect.prototype(x)
