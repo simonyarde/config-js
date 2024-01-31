@@ -1,5 +1,5 @@
 {
-  "name": "@webjam/config",
+  "name": "@webjamjs/config",
   "version": "1.4.0",
   "description": "Application config",
   "main": "config.mjs",
