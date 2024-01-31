@@ -5,7 +5,7 @@
   "main": "config.mjs",
   "repository": {
     "type": "git",
-    "url": "https://github.com/webjamjs/config"
+    "url": "https://github.com/webjamjs/config.git"
   },
   "files": [
     "config.mjs",
