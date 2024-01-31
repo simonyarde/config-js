@@ -4,7 +4,12 @@
 - Error if token name not found in vars.
 
 ```js
-import { Config } from '@webjam/config'
+import {
+    readConfigFile,
+    readConfigFileSync,
+    readConfigObject,
+    readConfigString
+} from '../config.mjs'
 ```
 
 ```js
@@ -16,7 +21,7 @@ const envDefaults = {
 ```
 
 ```js
-let config = Config.fromFile(
+let config = readConfigFileSync(
     './config.json', envDefaults, process.env)
 ```
 
@@ -31,14 +36,14 @@ const obj = {
     }
 }
 
-let config = Config.fromObj(
+let config = readConfigObject(
     obj, envDefaults, process.env)
 ```
 
 ```js
 const json = '{ "port": "{{PORT}}" }'
 
-let config = Config.fromJson(
+let config = readConfigString(
     json, envDefaults, process.env)
 ```
 
