@@ -12,7 +12,7 @@ name: Publish NPM package
 on:  
   push:
     tags:
-      - '1.*'
+      - 'v*'
 
 jobs:
   build:
