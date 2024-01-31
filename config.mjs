@@ -1,9 +1,10 @@
-import { is, expect } from "@simonyarde/type"
 import { readFileSync } from "node:fs"
 import { readFile } from "node:fs/promises"
 
 export function readConfigObject(value, ...vars) {
-    expect.prototype(value)
+    if (!(typeof value === 'object' && value !== 'null')) {
+        throw new Error('Expected object.')
+    }
     if (!vars.length) {
         return value
     }
@@ -12,33 +13,40 @@ export function readConfigObject(value, ...vars) {
 }
 
 export function readConfigFileSync(path, ...vars) {
+    if (!(typeof path === 'string')) {
+        throw new Error('Expected string.')
+    }
     const json = readFileSync(path, { encoding: 'utf8' })
     return readConfigString(json, ...vars)
 }
 
 export async function readConfigFile(path, ...vars) {
-    expect.string(path)
+    if (!(typeof path === 'string')) {
+        throw new Error('Expected string.')
+    }
     const json = await readFile(path, { encoding: 'utf8' })
     return readConfigString(json, ...vars)
 }
 
 export function readConfigString(value, ...vars) {
-    expect.string(value)
+    if (!(typeof value === 'string')) {
+        throw new Error('Expected string.')
+    }
     return readConfigObject(JSON.parse(value), ...vars)
 }
 
 function replaceTokens(x, replacer) {
-    if (is.prototype(x, Array.prototype)) {
+    if (Array.isArray(x)) {
         return x.map(x => replaceTokens(x, replacer))
     }
-    if (is.prototype(x)) {
+    if (typeof x === 'object' && x !== null) {
         const obj = {}
         for (const n of Object.getOwnPropertyNames(x)) {
             obj[n] = replaceTokens(x[n], replacer)
         }
         return obj
     }
-    if (is.string(x)) {
+    if (typeof x === 'string') {
         return replaceTokensInString(x, replacer)
     }
     return x

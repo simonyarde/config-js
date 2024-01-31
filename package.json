@@ -1,11 +1,15 @@
 {
-  "name": "@simonyarde/config",
+  "name": "@webjam/config",
   "version": "1.2.1",
   "description": "Application config",
   "main": "config.mjs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webjamjs/config"
+  },
   "files": [
     "config.mjs",
-    "config.mts",
+    "config.d.mts",
     "README.md"
   ],
   "scripts": {
@@ -14,10 +18,7 @@
   "author": "Simon Yarde",
   "license": "ISC",
   "devDependencies": {
-    "chai": "^4.3.7",
+    "chai": "^5.0.3",
     "mocha": "^10.2.0"
-  },
-  "dependencies": {
-    "@simonyarde/type": "^1.0.0"
   }
 }

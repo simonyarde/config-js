@@ -4,7 +4,7 @@
 - Error if token name not found in vars.
 
 ```js
-import { Config } from '@simonyarde/config'
+import { Config } from '@webjam/config'
 ```
 
 ```js
