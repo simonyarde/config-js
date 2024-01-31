@@ -1,5 +1,10 @@
 import { expect } from '../node_modules/chai/index.mjs'
-import { Config } from '../config.mjs'
+import {
+    readConfigFile,
+    readConfigFileSync,
+    readConfigObject,
+    readConfigString
+} from '../config.mjs'
 
 const testConfigPath = './test/test-config.json'
 
@@ -37,17 +42,22 @@ const expectConfig = {
 describe('Basic tests', function() {
 
     it('fromFile()', async function() {
-        const result = await Config.fromFile(testConfigPath, ...vars)
+        const result = await readConfigFile(testConfigPath, ...vars)
+        expect(result).to.deep.equal(expectConfig)
+    })
+
+    it('fromFileSync()', async function() {
+        const result = readConfigFileSync(testConfigPath, ...vars)
         expect(result).to.deep.equal(expectConfig)
     })
 
     it('fromString()', function() {
-        const result = Config.fromString(testConfigString, ...vars)
+        const result = readConfigString(testConfigString, ...vars)
         expect(result).to.deep.equal(expectConfig)
     })
 
     it('fromObject()', function() {
-        const result = Config.fromObject(testConfigObject, ...vars)
+        const result = readConfigObject(testConfigObject, ...vars)
         expect(result).to.deep.equal(expectConfig)
     })    
 })

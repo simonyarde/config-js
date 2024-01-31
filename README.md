@@ -47,6 +47,7 @@ let config = Config.fromJson(
 ## Testing
 
 ```
+npm ci
 npm run test
 ```
 
