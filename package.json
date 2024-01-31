@@ -1,6 +1,6 @@
 {
   "name": "@webjamjs/config",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "Application config",
   "main": "config.mjs",
   "repository": {
