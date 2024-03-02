@@ -1,6 +1,6 @@
 {
   "name": "@simonyarde/config",
-  "version": "1.4.4",
+  "version": "1.4.5",
   "description": "Application config",
   "main": "config.mjs",
   "repository": {
