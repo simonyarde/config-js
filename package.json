@@ -5,7 +5,7 @@
   "main": "config.mjs",
   "repository": {
     "type": "git",
-    "url": "https://github.com/simonyarde/config.git"
+    "url": "https://github.com/simonyarde/config-js.git"
   },
   "files": [
     "config.mjs",
